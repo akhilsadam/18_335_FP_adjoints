@@ -1,0 +1,10 @@
+#!/bin/bash
+# env reinstall serves as audit (since cluster is air-gapped)
+source {{init}}/conda_up.sh
+source {{init}}/venv_up.sh
+uv pip install -r {{install}}/requirements.txt
+nvidia-smi
+nvidia-smi topo -m
+python3 {{runner}} {{run}} {{configfile}} {{logfile}}
+deactivate
+conda deactivate

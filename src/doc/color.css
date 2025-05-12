@@ -1,0 +1,113 @@
+:root {
+    --mn-L-text-color: #0f0f0f;
+    --mn-D-text-color: #f0f0f0;
+    --mn-L3-text-color: #0c0c0c;
+    --mn-D3-text-color: #c0c0c0;
+    --mn-red-color: red;
+    --aijiro: rgba(235, 246, 247, 1);
+    --aijiro-alph: rgba(235, 246, 247, 0.15);
+    --mashiro: rgb(255, 255, 255);
+    --zoge-iro: rgb(255, 255, 240);
+    --hakushi: rgb(249, 251, 255);
+    --hakushi-alph: rgb(249, 251, 255, 0.5);
+    --mizu-iro: rgb(134, 171, 165);
+    --gunjo-iro: rgb(93, 140, 174);
+    --sora-iro: rgb(77, 143, 172);
+    --chigusa-iro: rgb(49, 117, 137);
+    --benimidori: rgb(120, 119, 155);
+    --kurobeni: rgb(35, 25, 30);
+    --rurikon: rgb(27, 41, 75);
+    --rurikon-alph: rgba(27, 41, 75, 0.15);
+    --konjo-iro: rgb(0, 49, 113);
+    --ao: rgb(0, 0, 255);
+    --omeshi-onando: rgb(61, 76, 81);
+    --tetsuonando: rgb(43, 55, 54);
+    --sakuranezumi: rgb(172, 129, 118);
+    --ginshu: rgb(188, 45, 41);
+    --azuki-iro: rgb(103, 36, 34);
+    --enji-iro: rgb(157, 41, 51);
+    --akabeni: rgb(195, 39, 43);
+    --shinshu: rgb(143, 29, 33);
+    --karakurenai: rgb(201, 33, 55);
+    --kokushoku: rgb(23, 20, 18);
+    --kokushoku-alph: rgba(23, 20, 18, 0.2);
+    /* not accurate */
+    --aijiro-haiiro: #A0A3A4;
+    --konjo-iro-haiiro: #ebf3ff;
+    --haiiro: rgba(91, 90, 92, 0.5);
+    --sukaitsuri-iro: rgb(220, 240, 250);
+    --sukaitsuri-iro-a: rgb(195, 203, 208);
+    --sukaitsuri-iro-b: rgb(60, 52, 47);
+    /* default */
+    --nandemonai: rgba(0, 0, 0, 0);
+    --shiro: var(--hakushi);
+    --kuro: rgb(0, 0, 0);
+    --shiro-kotoba: var(--aijiro);
+    --kuro-kotoba: var(--kurobeni);
+
+    --dark-primary: var(--kuro);
+    --light-primary: var(--sukaitsuri-iro-a);
+    --dark-secondary: var(--mashiro);
+    --light-secondary: var(--sukaitsuri-iro-b);
+    --haiiro-d: var(--haiiro);
+    --haiiro-l: var(--kuro);
+    --haiiro-ldu: transparent;
+    --haiiro-ll: transparent;
+    --light-primary-slider:var(--gunjo-iro);
+}
+
+
+
+.alert {
+    color: var(--karakurenai);
+}
+
+.light-link {
+    filter: invert(0.0);
+}
+.dark-link {
+    filter: hue-rotate(-15deg) invert(1);
+}
+
+video::-webkit-media-controls-panel{
+    background-image: none !important;
+    filter: opacity(0.0);
+   }
+
+video::-webkit-media-controls-mute-button{
+    display: none;
+   }
+
+video{
+    mix-blend-mode: normal;
+}
+
+video::-webkit-media-controls
+{
+    color: white !important;
+    mix-blend-mode: difference;
+    filter: none;
+}
+video::-webkit-media-controls-timeline{
+    color: black !important;
+    mix-blend-mode: difference;
+    filter: none;
+  }
+video::-internal-media-controls-segmented-track
+  {
+    box-shadow: none !important;
+  }
+
+video::-webkit-media-controls-current-time-display,
+video::-webkit-media-controls-time-remaining-display {
+    color: black !important;
+    filter: none;
+  }
+
+video::-webkit-media-controls-panel:hover {
+    filter: invert(1.0) opacity(1.0);
+   }
+
+video::-webkit-media-controls-play-button {
+    filter: invert(1.0);
+   }

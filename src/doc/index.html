@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>scale-invariants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Yuji+Boku&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="color.css">
+  <link rel="stylesheet" href="font.css">
+  <link rel="stylesheet" href="bars.css">
+  <script type="text/javascript"
+  src="https://www.maths.nottingham.ac.uk/plp/pmadw/LaTeXMathML.js">
+  </script>
+</head>
+<body>
+    <div class="title-toggle">
+        <div class="toggle-switch">
+          <label
+            ><input type="checkbox" id="toggle-input" /><span
+              class="slider"
+            ></span
+          ></label>
+        </div>
+        <div class="toggle-switch ts2">
+          <label
+            >
+            <img class="icon" src = "alt-text.webp" alt="Show Labels" height="25px" width="25px"/>
+            <input type="checkbox" id="toggle-input-2" /><span
+              class="slider"
+            ></span
+          ></label>
+        </div>
+      </div>
+  <div id="content"></div>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="ld.js"></script>
+  <script>
+    fetch('log.md')
+  .then(response => response.text())
+  .then(text => {
+    // Do something with the fetched text
+    // console.log(text);
+    document.getElementById('content').innerHTML =
+      marked.parse(text);
+
+    let chtml;
+    document.querySelectorAll('#plot').forEach((plot) => {
+        chtml = plot.innerHTML;
+        plot.innerHTML = `<div class="vwrap">`
+        + `<div class="corner"></div>`
+        + `<div class="x-label"><p>$\\hat{x}-x$</p><p>$\\hat{x}$</p><p>$x$</p></div>`
+        + `<div class="y-label"><p>$u$</p><p>$v$</p><p>$\\omega$</p></div>`
+        + `<video controls src=https://mseas.mit.edu/group/a1744874/ml_scope/scale_invariants/${plot.dataset.src} title=${plot.title}></video>`
+        + `</div>`;
+      });
+
+
+  })
+  .catch(error => {
+    // Handle any errors
+    console.error('Error fetching text:', error);
+  });
+
+  </script>
+</body>
+</html>

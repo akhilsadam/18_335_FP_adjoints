@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+#$ -cwd
+#$ -V
+#$ -j y
+#$ -w e
+#$ -S /bin/bash
+#$ -l h_core=0
+#$ -N scale_invariants
+#$ -q ibgpu.q
+#$ -o {{logfile}}
+
+## #######  -l gpu={{ngpu}}
+date
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=ALL
+{{run_commands}}
+date

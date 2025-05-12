@@ -1,0 +1,12 @@
+Bootstrap: localimage
+From: ubuntu:latest
+
+%environment
+    export IS_CONTAINER=True
+
+%post
+    apt-get update -y
+    apt-get install -y python3.10 python3-pip git
+
+%runscript
+    echo "-- Singularity CONTAINER --"

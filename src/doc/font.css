@@ -1,0 +1,253 @@
+@font-face {
+    font-family: "Kiona";
+    src: url('Kiona-Regular.ttf') format('truetype');
+  }
+
+@font-face {
+    font-family: "Avenir";
+    src: url('AvenirNextLTPro-Regular.otf');
+  }
+  
+:root {
+    --min-font-size: 14px;
+    --med-font-size: 18px;
+    --hdk-font-size: 22px;
+    --uhd-font-size: 28px;
+    --kotoba: 'Avenir', Aron Grotesque, Montserrat;
+    --kotoba2: monospace;
+    --kotoba3: 'Kiona', Montserrat;
+    --code: monospace, sans-serif;
+    --label-display: flex;
+    transition-timing-function: ease-out;
+}
+
+h1 {
+    font-family: var(--kotoba3);
+    font-size: 3em;
+    color: var(--haiiro-ld);
+}
+
+h2 {
+    font-family: var(--kotoba2);
+    font-size: 1.5em;
+    color: var(--haiiro-ld);
+}
+
+h2 a {
+    color: var(--haiiro-ld);
+    text-decoration: none;
+}
+
+h3 {
+    color: var(--haiiro-ld);
+    font-family: var(--kotoba2);
+    font-size: 1em;
+    margin-left: 2em;
+}
+
+body, p{
+    font-family: var(--kotoba);
+    font-size: var(--min-font-size);
+    /* background-color: var(--dark-primary); */
+    /* color: var(--light-primary); */
+}
+
+li {
+    font-size: var(--min-font-size) !important;
+}
+
+p{
+    margin-left: 2em;
+}
+
+.title-toggle
+{
+    position: fixed;
+    right: 2em;
+}
+
+#content{
+    width: 90%;
+    margin-left: 5%;
+}
+
+
+details {
+    margin-left: 2em;
+}
+
+.huge {
+    /* font-size: 80px; */
+    font-size: max( min(10vh, 10vw), var(--uhd-font-size));
+}
+
+
+/* .heading {
+    font-size: 28px;
+} */
+
+.large {
+    /* font-size: 22px; */
+    font-size: max( min(2.75vh, 2.75vw), var(--hdk-font-size));
+}
+
+.normal {
+    /* font-size: 18px; */
+    font-size: max( min(2.25vh, 2.25vw), var(--med-font-size));
+}
+
+.small {
+    /* font-size: 14px; */
+    font-size: max( min(1.75vh, 1.75vw), var(--min-font-size));
+}
+
+.bold {
+    font-weight: bold;
+}
+
+li {
+    font-size: 14px;
+    margin-left: 10px;
+    list-style-type: disc;
+    display: list-item;
+}
+
+.card h1 {
+    font-size: 1em !important;
+    font-family: 'Comfortaa' !important;
+}
+
+.title-toggle {
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .title-toggle div:last-child {
+    margin-left: auto;
+  }
+  
+  .toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 25px;
+    margin-top: 2px;
+  }
+
+  .ts2 {
+    right: -21px;
+  }
+  
+  label {
+    position: absolute;
+    width: 100%;
+    height: 25px;
+    background-color: var(--dark-primary);
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  
+  #toggle-input, #toggle-input-2 {
+    position: absolute;
+    display: none;
+  }
+  .slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    transition: 0.3s;
+  }
+  
+  #toggle-input:checked ~ .slider {
+    background-color: var(--dark-primary);
+  }
+
+  #toggle-input-2:checked ~ .slider  {
+    /* content: "$u$"; */
+    background-color: transparent;
+  }
+  .ts2 label {
+    background-color: transparent;
+  }
+  
+  .slider::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: var(--light-primary-slider);
+    box-shadow: none;
+    transition: 0.1s;
+  }
+  
+  #toggle-input:checked ~ .slider::before  {
+    transform: translateX(-22px);
+    box-shadow: inset 6px 0 0 0 var(--light-primary);
+  }
+
+  #toggle-input-2:checked ~ .slider::before  {
+    transform: translateX(-22px);
+    box-shadow: inset -2px 2px 0 0 var(--dark-primary);
+  }
+  .ts2 .slider::before{
+    top: 6px;
+    right: 8px;
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+    transition: none;
+  }
+
+.icon{
+    z-index: -2;
+    position: fixed;
+    transform: translate(1px,-1px);
+}
+
+  video{
+    max-width: 100%;
+  }
+
+  .vwrap {
+    display: inline-grid;
+    max-width: 45%;
+    height: auto;
+    grid-template-columns: auto auto;
+    gap: 0px;
+    grid-auto-rows: minmax(10px, auto);
+  }
+
+  .corner{
+    display: inline;
+  }
+  .x-label{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .y-label{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+  }
+  .x-label,.y-label{
+    font-size: 14px;
+    font: var(--kotoba2);
+    color: var(--haiiro-ld);
+    display: var(--label-display);
+  }
+  .x-label p{
+    margin: 0;
+    width: 33%;
+    text-align: center;
+  }
+  .y-label p{
+    margin: 0;
+    margin-right: 3px;
+  }

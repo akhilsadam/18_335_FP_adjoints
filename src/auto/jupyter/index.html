@@ -1,0 +1,98 @@
+<script src="//code.jquery.com/jquery-1.8.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+<link rel="stylesheet" href="style.css">
+<script>
+
+function ajaxrequest(){
+    var _username = $("#username").val();
+    var _password = $("#password").val(); 
+
+
+   $("#response_").html('Waiting for JupyterLab to start...');
+
+   $.ajax({
+        type: "POST", 
+        url: "run.php",  
+        data: {
+            scriptn: "jupyter-init.sh",
+            username: _username,
+            password: _password,
+        },
+        success: function(response){
+            console.log(response);
+            if (response.length > 1){
+                var _jid = response[1]
+                console.log(_jid);
+                $.ajax({
+                    type: "POST", 
+                    url: "run.php",  
+                    data: {
+                        scriptn: "tunnel.sh",
+                        username: _username,
+                        password: _password,
+                    },
+                    success: function(res) {
+                        console.log(res);
+                    }});
+                $("#response_").html('');
+
+            }
+            else{
+                console.log('error');
+                $("#response_").html(response);
+            }
+        },
+        error: function(response){
+            console.log('error');
+            $("#response_").html(response);
+        },
+        dataType:"json"
+    })
+}
+
+function ajaxcancel(){
+    var _username = $("#username").val();
+    var _password = $("#password").val(); 
+    $.ajax({
+        type: "POST", 
+        url: "run.php",  
+        data: {
+            scriptn: "jupyter-cancel.sh",
+            username: _username,
+            password: _password,
+        },
+        success: function(response){
+            if (response.length > 1){
+                $("#response_").html(response[1]);
+            }
+            else{
+                $("#response_").html(response);
+            }
+        },
+        dataType:"json"
+    });
+}
+
+function ajaxssh(){
+    var _username = $("#username").val();
+    var _password = $("#password").val();
+    $("#response_").html('Establishing SSH...');
+    revtun(_username, _password);
+    $("#response_").html('Connected.');
+}
+
+</script>
+
+<div id="request_">
+    <label for="username">username:</label>
+    <input type="text" id="username" name="username" value="a1744874"><br>
+    <label for="password">password:</label>
+    <input type="password" id="password" name="password" value=""><br>
+    <input onclick="ajaxrequest()" type="submit" value="Request">
+    <input onclick="ajaxcancel()" type="submit" value="Cancel">
+    <input onclick="ajaxssh()" type="submit" value="RevSSH">
+</div>
+<div id="response_"></div>
+<div class="view">
+<iframe allow="cross-origin-isolated" src="http://localhost:8596/lab" id="view" width="100%" height="80%"></iframe>
+</div>
